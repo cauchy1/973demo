@@ -1,0 +1,12 @@
+#Fri Apr 10 10:26:52 CST 2015
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/sources.properties=UTF-8
+encoding//WebContent/js/getdata.js=UTF-8
+encoding//src/com/zc/action/ControllerProxy.java=UTF-8
+encoding//src/com/zc/action/PantageProxy.java=UTF-8
+encoding//src/com/zc/action/RainFallProxy.java=UTF-8
+encoding//src/com/zc/action/SendMessageProxy.java=UTF-8
+encoding//src/com/zc/action/StationInfoProxy.java=UTF-8
+encoding//src/com/zc/action/TyphoonProxy.java=UTF-8
+encoding//src/com/zc/action/WeatherReportProxy.java=UTF-8
+encoding//src/com/zc/test/HelloWorldPlushlet.java=UTF-8

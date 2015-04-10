@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">    
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    
+    <script type="text/javascript" src="ajax-pushlet-client.js"></script>
+<title>南京防汛防台风应急系统</title>
+<LINK rel=stylesheet type=text/css href="css/index.css" media=all>
+<SCRIPT type=text/javascript src="js/getdata.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/newGetData.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/getstaticdata.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/icons.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/timepast.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/datapreprocessing.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/typhoon.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/video.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/onloading.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/pushlet.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/setlocation.js"></SCRIPT>
+<script type=text/javascript src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type=text/javascript src="ajax-pushlet-client.js"></script>
+<script type=text/javascript src="js/jquery-1.11.2.min.js"></script>
+<style>
+    .home_tx {PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(images/hometx_03.gif); PADDING-BOTTOM: 0px; MARGIN: auto; OVERFLOW: hidden; WIDTH: 100%; PADDING-TOP: 0px}
+  </style>
+  </head>
+
+  <body onload="start()">
+<div id="container">
+	<div id="header">
+		<h1 style="text-align:center">南京防汛防台风应急系统</h1>
+	</div>
+	
+	<DIV id=home_tx style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: auto; OVERFLOW: hidden; WIDTH: 100%; PADDING-TOP: 0px; POSITION: relative; HEIGHT: 0px">
+    <DIV class=home_tx id=home_tx_in style="POSITION: absolute; TOP: -37px; HEIGHT: 37px" align=center>
+    <h2 id="typhoon" style="float:left;color:red;height:100%"></h2>
+    <h2 id="weather_report"></h2>
+</DIV></DIV>
+	
+<div id="common_box">
+ <div id="cli_on">+</div>
+ <div id="all_table">
+	<div id="menu">
+	
+		<h2>重点监测区域</h2>
+		<table>
+		<table id="nj" border="1" class="t2"><tr class="a1"><td>南京      <img id="right" src="images/right.png" ></td></tr></table>
+		<table id="showtables" border="1" class="t2"><tr><td>其他      <img id="down" src="images/downing.png"></td></tr></table>
+		<div id="tables">
+		<table id="sx" onclick="set_location(120.589619,29.988539,10)" border="1" class="t2"><tr><td>绍兴</td></tr></table>
+		<table id="haz" onclick="set_location(120.161882,30.272408,10)" border="1" class="t2"><tr class="a1"><td>杭州</td></tr></table>
+		<table id="jx" onclick="set_location(120.759794,30.746828,10)" border="1" class="t2"><tr><td>嘉兴</td></tr></table>
+		<table id="hz" onclick="set_location(120.102091,30.873375,10)" border="1" class="t2"><tr class="a1"><td>湖州</td></tr></table>
+		<table id="sz" onclick="set_location(120.589619,31.307305,10)" border="1" class="t2"><tr><td>苏州</td></tr></table>
+		<table id="cz" onclick="set_location(119.977909,31.808971,10)" border="1" class="t2"><tr class="a1"><td>常州</td></tr></table>
+		<table id="wx" onclick="set_location(120.341256,31.553309,10)" border="1" class="t2"><tr><td>无锡</td></tr></table>
+		<table id="nb" onclick="set_location(121.560077,29.872356,10)" border="1" class="t2"><tr class="a1"><td>宁波</td></tr></table>
+		</table>
+		</div>
+	</div>
+
+	<div id="table">
+	<h2>河道站<img src="images/hedao.jpg"></h2>
+	<table width="240" border="1" class="t2">
+	<tr class="a1">
+	<td>名称</td>
+	<td>水量</td>
+	<td>雨量</td>
+	</tr>
+	<tr onclick="set_location(118.324850,32.092050,11,marker2,infoWindow2);">
+	<td>晓桥 </td>
+		<td id="62914200sw"> 9.50m</td>
+		<td id="62914200yl"> 35mm</td>
+	</tr>
+	<tr onclick="set_location(118.502400,32.202500,11,marker3,infoWindow3)"class="a1">
+	<td>六合 </td>
+		<td id="62914800sw"> 7.85m</td>
+		<td id="62914800yl"> 34mm</td>
+	</tr>
+	<tr onclick="set_location(118.491300,31.571000,11,marker4,infoWindow4)">
+	<td>东山 </td>
+		<td id="62702350sw"> 8.5m</td>
+		<td id="62702350yl"> 37mm</td>
+	</tr>
+	<tr onclick="set_location(118.570600,31.331600,11,marker5,infoWindow5)"class="a1">
+	<td>陈家桥</td>
+	<td id="60406100sw">6.5m</td><td id="60406100yl">33mm</td></tr>
+	
+	<tr onclick="set_location(118.514200,31.191900,11,marker6,infoWindow6)">
+	<td>高淳</td>
+	<td id="62912800sw">10.00m</td><td id="62912800yl">34mm</td></tr>
+	
+	<tr onclick="set_location(118.441600,32.152400,11,marker7,infoWindow7)"class="a1">
+	<td>葛塘</td>
+	<td id="62916400sw"> ----</td><td id="62916400yl">37mm</td></tr>
+	
+	<tr onclick="set_location(118.583800,31.381900,11,marker8,infoWindow8)">
+	<td>天生桥</td>
+	<td id="62703100sw"> ----</td><td id="62703100yl">27mm</td></tr>
+	<tr onclick="set_location(119.060700,31.183600,11,marker10,infoWindow10)"class="a1">
+	<td >茅东闸</td>
+	<td id="63101001sw"> ----</td><td id="63101001yl">36mm</td></tr>
+	</table>
+	<h2>水库<img src="images/shuiwen.jpg"></h2>
+	<table width="240" border="1" class="t2">
+	<tr class="a1"><td>名称</td><td>水量</td><td>雨量</td></tr>
+	<tr id="fangbian" onclick="set_location(119.071700,31.422900,11,marker11,infoWindow11)">
+	<td >方便</td>
+	<td id="62703300sw">25.89m</td><td id="62703300yl">35mm</td></tr>
+	<tr onclick="set_location(119.071700,31.422900,11,marker12,infoWindow12)"class="a1">
+	<td>大河桥</td>
+	<td id="62916600sw">21.34m</td><td id="62916600yl">35mm</td></tr>
+	<tr onclick="set_location(118.500600,31.323900,11,marker13,infoWindow13)">
+	<td >河王坝</td>
+	<td id="62916700sw">34.87m</td><td id="62916700yl">35mm</td></tr>
+	<tr onclick="set_location(119.110500,31.360700,11,marker15,infoWindow15)"class="a1">
+	<td >老鸦坝</td>
+	<td id="62703070sw">34.64m</td><td id="62703070yl">35mm</td></tr>
+	<tr onclick="set_location(119.062100,31.333200,11,marker16,infoWindow16)">
+	<td >姚家</td>
+	<td id="62703120sw">20.49m</td><td id="62703120yl">35mm</td></tr>
+	<tr onclick="set_location(119.034600,31.384100,11,marker17,infoWindow17)"class="a1">
+	<td>中山</td>
+	<td id="62703261sw">23.82m</td><td id="62703261yl">35mm</td></tr></table>
+</div>
+
+</div>
+</div>
+
+	<div id="allmap">
+
+	</div>
+<div id="rightdiv">
+<div style="width:28px;height:180px ;float:left">
+<div id="right_click_on">+</div>
+</div>
+<div id="all_right_div">
+	<table border="1" class="t1" style="width:200px">
+	<tr><td><div id="right_time" class="timediv">
+	<table id="right_show_time" border="1" class="t2" style="width:200px;font-size:20px;"><tr class="a1"><td>当前时间     <img id="right" src="images/downing.png" ></td></tr></table>
+	<div id="right_time_content" class="timediv">
+	<h2 id="time1">2012-08-08                  10:00:00</h2>
+	<h2>台风:海葵</h2>
+	<br />
+	</div>
+	</div>
+	</td></tr><tr>
+	<td>
+	<div id="right_tuli"  class="timediv">
+	<table id="right_show_tuli" border="1" class="t2" style="width:200px;font-size:20px;"><tr class="a1"><td>图例     <img id="right" src="images/downing.png" ></td></tr></table>
+	<div id="right_tuli_content">
+	<div><input  type="checkbox" onclick="hedao();"><img src="images/hedao.jpg"><h2>河道站</h2></div>
+    <div><input  type="checkbox" onclick="shuiku();"><img src="images/shuiwen.jpg"><h2>水库站</h2></div>
+	</div>
+	</div>
+	</td></tr><tr>
+	<td>
+	<div id="right_publish"  class="timediv">
+	<table  id="lay" border="1" class="t2" style="width:200px;font-size:20px;"><tr class="a1"><td>汛情汇报     <img id="right" src="images/left.png" ></td></tr></table>
+	</div>
+	</td></tr>
+	<tr>
+	<td>
+	<div id="right_running"  class="timediv">
+	<table border="1" class="t2" style="width:200px;font-size:20px;"><tr class="a1"><td id="running_text">运行   </td></tr></table>
+	</div>
+	</td></tr>
+	</table>
+</div>
+</div>
+
+
+
+ <div id="showdiv">
+   <div id="close">关闭</div>
+   <div id="testdiv"></div>
+</div>
+  </body>
+  
+</html>
+
+<script type=text/javascript>
+var running=false;
+var worning = 0;
+var time=0.5;
+var minute=0;
+var polygon;
+	var circle;		
+	var flag = 0;
+	//var oBox = document.getElementById("alert1");
+	var timer = null;	
+	 var map = new BMap.Map("allmap");
+     var point = new BMap.Point(118.757364,32.104793);
+     map.centerAndZoom(point, 10);
+     var shuiku_icon;
+     var shipin_icon;
+     var hedao_icon;
+     var sx_icon;
+     var haz_icon;
+     var hz_icon;
+     var wx_icon;
+     var cz_icon;
+     var nb_icon;
+     var stringxq;
+     var stringyj;
+     var stringlyb;
+     var marker2 ;             
+     var infoWindow2 ;
+     var marker3;             
+     var infoWindow3;
+     var marker4 ;
+     var infoWindow4;
+     var marker5;
+     var infoWindow5;
+     var marker6;
+     var infoWindow6;
+     var marker7;  
+     var infoWindow7;
+     var marker8; 
+     var infoWindow8;
+     var marker10; 
+     var infoWindow10;
+     var marker11;  
+     var infoWindow11;
+     var marker12;  
+     var infoWindow12 ;
+     var marker13; 
+     var infoWindow13;
+     var marker15;   
+     var infoWindow15;
+     var marker16;   
+     var infoWindow16;
+     var marker17;   
+     var infoWindow17;
+     var haz_marker;
+     var hz_marker;
+     var cz_marker;
+     var nb_marker;
+     var wx_marker;
+     var sx_marker;
+	var allInfo=null;
+	var lastAllInfo=null;
+     var is_home_tx_show = false;
+     var div_home_tx = document.getElementById("home_tx");
+     var div_home_tx_in = document.getElementById("home_tx_in");
+     var stepms = 10;
+     function home_tx_show(){
+     home_tx_stepshow();
+     }
+     function home_tx_stepshow(){
+     var curHeight = parseInt(div_home_tx.offsetHeight);
+     if(curHeight>=37){
+     is_home_tx_show = true;
+     }else{
+     div_home_tx.style.height = (curHeight + 4) + "px";
+     div_home_tx_in.style.top = (parseInt(div_home_tx_in.style.top)+4)+"px";
+     window.setTimeout(home_tx_stepshow,30);
+     }
+     }
+     
+     if(window.addEventListener){
+     window.addEventListener("load",home_tx_show,false);
+     }else{
+     window.attachEvent("onload",home_tx_show);
+     }
+
+</script>
+

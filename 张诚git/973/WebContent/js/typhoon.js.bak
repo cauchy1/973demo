@@ -1,0 +1,207 @@
+ function getNowtime(index)
+	{
+		var hour=10+((index-31)-((index-31)%3))/3;
+		var m = (index-1)%3*2;
+		var time = "2012-08-08 "+hour+":"+m+"0";
+		return time;
+	}
+	
+function drawsector(index)
+{
+	var my_baidumap = this;
+	var info = my_baidumap.getTyphoo(index);
+	var info1;	
+	if(index<9&&index>0)
+	info1 = my_baidumap.getTyphoo(index-0.5);
+	else 
+	info1 = my_baidumap.getTyphoo(index-1);
+	var distance=Math.sqrt((info[1]-info1[1])*(info[1]-info1[1])+(info[2]-info1[2])*(info[2]-info1[2]));
+	var cos=(info1[1]-info[1])/distance;
+	var sin=(info[2]-info1[2])/distance;
+	polygon = new BMap.Polygon([
+	new BMap.Point(info[1],info[2]),
+	new BMap.Point(info[1]+2*sin*sin60-2*cos*sin30,info[2]+2*cos*sin60+2*sin*sin30),
+	new BMap.Point(info[1]+2*sin*sin45-2*cos*sin45,info[2]+2*cos*sin45+2*sin*sin45),
+	new BMap.Point(info[1]+2*sin*sin30-2*cos*sin60,info[2]+2*cos*sin30+2*sin*sin60),
+	new BMap.Point(info[1]+2*sin*sin15-2*cos*sin75,info[2]+2*cos*sin15+2*sin*sin75),
+	new BMap.Point(info[1]-2*cos,info[2]+2*sin),
+	new BMap.Point(info[1]-2*cos*sin75-2*sin*sin15,info[2]+2*sin*sin75-2*sin15*cos),
+	new BMap.Point(info[1]-2*cos*sin60-2*sin*sin30,info[2]+2*sin*sin60-2*sin30*cos),
+	new BMap.Point(info[1]-2*cos*sin45-2*sin*sin45,info[2]+2*sin*sin45-2*sin45*cos),
+	//new BMap.Point(info[1]-2*cos*sin30-2*sin*sin60,info[2]+2*sin*sin30-2*sin60*cos),
+	], {strokeColor:"red", strokeWeight:6, strokeOpacity:0.5});
+	my_baidumap.map.addOverlay(polygon);
+
+}
+
+function setFlag(i){
+	flag = i;
+}
+function showtyphoo(){	
+	var my_baidumap = this;
+	my_baidumap.map.setZoom(8);
+
+		//alert("1");
+		var info = my_baidumap.getTyphoo(0);
+		var point = new BMap.Point(info[1],info[2]);
+		my_baidumap.map.panTo(point);  
+		my_baidumap.insertMarker(point,0,info[0],info[3]);
+		if(worning=0)
+		worning=1;
+		my_baidumap.drawsector(0);
+		//my_baidumap.insertWindow(info[0],info[3],point);
+	
+	dis();	    
+}		
+function get_distance(x1,x2,y1,y2)
+{
+	return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+}
+function check_city(index)
+{
+	haz_marker.hide();
+	document.getElementById("haz").className="changecolor"+6;
+	hz_marker.hide();
+	document.getElementById("hz").className="changecolor"+6;
+	cz_marker.hide();
+	document.getElementById("cz").className="changecolor"+6;
+	nb_marker.hide();
+	document.getElementById("nb").className="changecolor"+6;
+	wx_marker.hide();
+	document.getElementById("wx").className="changecolor"+6;
+	sx_marker.hide();
+	document.getElementById("sx").className="changecolor"+6;
+	document.getElementById("nj").className="changecolor"+6;
+	var my_baidumap = this;
+	var infomation = my_baidumap.getTyphoo(index);
+	var di=get_distance(infomation[1],120.161882,infomation[2],30.272408);
+	if((di<2)&&(infomation[1]>120.589619))
+	{
+		haz_marker.show();
+		document.getElementById("haz").className="changecolor"+0;
+		var ctime=infomation[0]+":00";
+		var yl=getcityly("hangzhou",ctime);
+		var haz_infoWindow = new BMap.InfoWindow("<h2>当天累计水位:  "+yl+"</h2>");
+		haz_marker.addEventListener("click", function(){this.openInfoWindow(haz_infoWindow);});
+	}
+	
+	di=get_distance(infomation[1],120.102091,infomation[2],30.873375);
+	if((di<2)&&(infomation[1]>120.102091))
+	{
+		hz_marker.show();
+		document.getElementById("hz").className="changecolor"+0;
+		var ctime=infomation[0]+":00";
+		var yl=getcityly("huzhou",ctime);
+		var hz_infoWindow = new BMap.InfoWindow("<h2>当天累计水位:  "+yl+"</h2>");
+		hz_marker.addEventListener("click", function(){this.openInfoWindow(hz_infoWindow);});
+	}
+	
+	di=get_distance(infomation[1],119.977909,infomation[2],31.808971);
+	if((di<2)&&(infomation[1]>119.977909))
+	{
+		cz_marker.show();
+		document.getElementById("cz").className="changecolor"+0;
+		var yl=getcityly("changzhou",infomation[0]+":00");
+		var ctime=infomation[0]+":00";
+		var yl=getcityly("changzhou",ctime);
+		var cz_infoWindow = new BMap.InfoWindow("<h2>当天累计水位:  "+yl+"</h2>");
+		cz_marker.addEventListener("click", function(){this.openInfoWindow(cz_infoWindow);});
+	}
+
+	di=get_distance(infomation[1],121.560077,infomation[2],29.872356);
+	if((di<2)&&(infomation[1]>121.560077))
+	{
+		nb_marker.show();
+		document.getElementById("nb").className="changecolor"+0;
+		var ctime=infomation[0]+":00";
+		var yl=getcityly("ningbo",ctime);
+		var nb_infoWindow = new BMap.InfoWindow("<h2>当天累计水位:  "+yl+"</h2>");
+		nb_marker.addEventListener("click", function(){this.openInfoWindow(nb_infoWindow);});
+	}
+	
+	di=get_distance(infomation[1],120.341256,infomation[2],31.553309);
+	if((di<2)&&(infomation[1]>120.341256))
+	{
+		wx_marker.show();
+		document.getElementById("wx").className="changecolor"+0;
+		var ctime=infomation[0]+":00";
+		var yl=getcityly("wuxi",ctime);
+		var wx_infoWindow = new BMap.InfoWindow("<h2>当天累计水位:  "+yl+"</h2>");
+		wx_marker.addEventListener("click", function(){this.openInfoWindow(wx_infoWindow);});
+	}
+		
+	di=get_distance(infomation[1],120.589619,infomation[2],29.988539);
+	if((di<2)&&(infomation[1]>120.589619))
+	{
+		sx_marker.show();
+		document.getElementById("sx").className="changecolor"+0;
+		var ctime=infomation[0]+":00";
+		var yl=getcityly("shaoxing",ctime);
+		var sx_infoWindow = new BMap.InfoWindow("<h2>当天累计水位:  "+yl+"</h2>");
+		sx_marker.addEventListener("click", function(){this.openInfoWindow(sx_infoWindow);});
+	}
+
+}
+
+function insertMarker(point) {
+	var my_baidumap = this;
+	var marker;
+	var type = arguments[1]? arguments[1]:0;
+	switch(type)
+	{
+		case 0:
+			marker = new BMap.Marker(point);        // 创建标注 
+			break;
+		case 1:
+			//alert(1);
+			var myIcon = new BMap.Icon("img/a.png", new BMap.Size(108,83));
+			marker = new BMap.Marker(point,{icon:myIcon});
+			break;
+		case 2:
+			var myIcon = new BMap.Icon("img/b.png", new BMap.Size(108,83));
+			marker = new BMap.Marker(point,{icon:myIcon});
+			break;
+		case 3:
+			var myIcon = new BMap.Icon("img/c.png", new BMap.Size(108,83));
+			marker = new BMap.Marker(point,{icon:myIcon});
+			break;
+	}
+	 my_baidumap.map.addOverlay(marker);      // 将标注添加到地图中
+	var mes = arguments[2]? 1:0;
+	
+	if(mes == 1){
+		var infoWindow2 = my_baidumap.generateWindow(arguments[2],arguments[3]);
+		marker.addEventListener("click", function(){this.openInfoWindow(infoWindow2);});
+		//alert("2");
+	}
+}
+
+function generateWindow(title,mes){
+	var my_baidumap = this;
+	var opts = {
+	  width : 250,     // 信息窗口宽度
+	  height: 120,     // 信息窗口高度
+	  title : title,  // 信息窗口标题
+	}
+	var infoWindow = new BMap.InfoWindow(mes, opts);  // 创建信息窗口对象
+	
+	return infoWindow;
+}
+
+//以下是淡出效果
+var o = document.getElementById("alert"); 
+var i = 150; 
+var iMin = 0; 
+var iIntervalId = null; 
+
+function change() 
+{ 
+i--; 
+if(document.all) o.style.filter = "Alpha(Opacity=" + i + ")"; //for IE	
+else o.style.opacity = i/100; //for FF 
+if(i == iMin) clearInterval(iIntervalId);	//去掉这句循环	
+//if(i == iMin) i = 100; 加上这句循环 
+} 
+function dis(){
+	iIntervalId = setInterval(change, 5); 
+}

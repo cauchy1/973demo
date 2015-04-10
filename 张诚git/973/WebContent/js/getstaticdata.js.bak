@@ -1,0 +1,344 @@
+//获取当前时间
+function get_measuretime(index)
+{
+	index=index?index:31;
+	var info;
+	switch(index)
+	{
+		case 30:info="2012-08-08 10:00:00";break;
+		case 31:info="2012-08-08 10:20:00";break;
+		case 32:info="2012-08-08 10:40:00";break;
+		case 33:info="2012-08-08 11:00:00";break;
+		case 34:info="2012-08-08 11:20:00";break;
+		case 35:info="2012-08-08 11:40:00";break;
+		case 36:info="2012-08-08 12:00:00";break;
+		case 37:info="2012-08-08 12:20:00";break;
+		case 38:info="2012-08-08 12:40:00";break;
+		case 39:info="2012-08-08 13:00:00";break;
+		case 40:info="2012-08-08 13:20:00";break;
+		case 41:info="2012-08-08 13:40:00";break;
+		case 42:info="2012-08-08 14:00:00";break;
+		case 43:info="2012-08-08 14:20:00";break;
+		case 44:info="2012-08-08 14:40:00";break;
+		case 45:info="2012-08-08 15:00:00";break;
+		case 46:info="2012-08-08 15:20:00";break;
+		case 47:info="2012-08-08 15:40:00";break;
+		case 48:info="2012-08-08 16:00:00";break;
+		case 49:info="2012-08-08 16:20:00";break;
+		case 50:info="2012-08-08 16:40:00";break;
+		case 51:info="2012-08-08 17:00:00";break;
+		case 52:info="2012-08-08 17:20:00";break;
+		case 53:info="2012-08-08 17:40:00";break;
+		case 54:info="2012-08-08 18:00:00";break;
+		case 55:info="2012-08-08 18:20:00";break;
+		case 56:info="2012-08-08 18:40:00";break;
+		case 57:info="2012-08-08 19:00:00";break;
+		case 58:info="2012-08-08 19:20:00";break;
+		case 59:info="2012-08-08 19:40:00";break;
+		case 60:info="2012-08-08 20:00:00";break;
+		case 61:info="2012-08-08 20:20:00";break;
+		case 62:info="2012-08-08 20:40:00";break;
+		case 63:info="2012-08-08 21:00:00";break;
+		case 64:info="2012-08-08 21:20:00";break;
+		case 65:info="2012-08-08 21:40:00";break;
+		case 66:info="2012-08-08 22:00:00";break;
+		case 67:info="2012-08-08 22:20:00";break;
+		case 68:info="2012-08-08 22:40:00";break;
+		case 69:info="2012-08-08 23:00:00";break;
+		case 70:info="2012-08-08 23:20:00";break;
+		case 71:info="2012-08-08 23:40:00";break;
+		case 72:info="2012-08-09 00:00:00";break;
+		case 73:info="2012-08-09 00:20:00";break;
+	}
+	return info;
+}
+
+function getTyphoo(index){
+	//此处替换为数据获取代码，由于是DEMO，我使用了静态数据
+	index = index?index:0;
+	var info = new Array()
+	
+	switch(index){
+	
+		case 0:
+			info[0] = "2012-08-07 16:00";
+			info[1] = 123.5;
+			info[2] = 27.8;
+			info[3] = "气压：950 百帕<br />最大风速：45m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 0.5:
+			info[0] = "2012-08-07 17:00";
+			info[1] = 123.4;
+			info[2] = 27.9;
+			info[3] = "气压：945 百帕<br />最大风速：48m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 1:
+			info[0] = "2012-08-07 18:00";
+			info[1] = 123.3;
+			info[2] = 28;
+			info[3] = "气压：945 百帕<br />最大风速：45m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 1.5:
+			info[0] = "2012-08-07 19:00";
+			info[1] = 123.25;
+			info[2] = 28;
+			info[3] = "气压：945 百帕<br />最大风速：45m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 2:
+			info[0] = "2012-08-07 20:00";
+			info[1] = 123.2;
+			info[2] = 28;
+			info[3] = "气压：945 百帕<br />最大风速：48m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 2.5:
+			info[0] = "2012-08-07 21:00";
+			info[1] = 123;
+			info[2] = 28.2;
+			info[3] = "气压：945 百帕<br />最大风速：48m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 3:
+			info[0] = "2012-08-07 22:00";
+			info[1] = 122.9;
+			info[2] = 28.4;
+			info[3] = "气压：945 百帕<br />最大风速：48m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 3.5:
+			info[0] = "2012-08-07 23:00";
+			info[1] = 122.7;
+			info[2] = 28.5;
+			info[3] = "气压：945 百帕<br />最大风速：48m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 4:
+			info[0] = "2012-08-08 00:00";
+			info[1] = 122.5;
+			info[2] = 28.7;
+			info[3] = "气压：945 百帕<br />最大风速：48m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 4.5:
+			info[0] = "2012-08-08 01:00";
+			info[1] = 122.3;
+			info[2] = 28.8;
+			info[3] = "气压：945 百帕<br />最大风速：45m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+		case 5:
+			info[0] = "2012-08-08 02:00";
+			info[1] = 122.2;
+			info[2] = 28.8;
+			info[3] = "气压：950 百帕<br />最大风速：45m/s<br />七级风半径： 400km<br />十级凤半径： 180km<br />方向：";
+			break;
+		case 5.5:
+			info[0] = "2012-08-08 03:00";
+			info[1] = 122.1;
+			info[2] = 29;
+			info[3] = "气压：950 百帕<br />最大风速：45m/s<br />七级风半径： 400km<br />十级凤半径： 180km<br />方向：";
+			break;
+		case 6:
+			info[0] = "2012-08-08 04:00"
+			info[1] = 121.8
+			info[2] = 29.1
+			info[3] = "气压：968 百帕<br />最大风速：40 m/s<br />七级风半径：400 km<br />十级凤半径：180 km<br />方向："
+			break;		
+		case 6.5:
+			info[0] = "2012-08-08 05:00"
+			info[1] = 121.75
+			info[2] = 29.1
+			info[3] = "气压：968 百帕<br />最大风速：40 m/s<br />七级风半径：400 km<br />十级凤半径：180 km<br />方向："
+			break;
+		case 7:
+			info[0] = "2012-08-08 06:00";
+			info[1] = 121.7;
+			info[2] = 29.1;
+			info[3] = "气压：970 百帕<br />最大风速：38 m/s<br />七级风半径：400 km<br />十级凤半径：160 km<br />方向：";	
+			break;
+		case 7.5:
+			info[0] = "2012-08-08 07:00";
+			info[1] = 121.6;
+			info[2] = 29.2;
+			info[3] = "气压：972 百帕<br />最大风速：38 m/s<br />七级风半径：400 km<br />十级凤半径：160 km<br />方向：";	
+			break;
+		case 8:
+			info[0] = "2012-08-08 08:00";
+			info[1] = 121.5;
+			info[2] = 29.2;
+			info[3] = "气压：974 百帕<br />最大风速：38 m/s<br />七级风半径：400 km<br />十级凤半径：160 km<br />方向：";	
+			break;	
+		case 8.5:
+			info[0] = "2012-08-08 09:00";
+			info[1] = 121.3;
+			info[2] = 29.4;
+			info[3] = "气压：974 百帕<br />最大风速：38 m/s<br />七级风半径：400 km<br />十级凤半径：160 km<br />方向：";	
+			break;	
+		case 9:
+			info[0] = "2012-08-08 10:00";
+			info[1] = 121;
+			info[2] = 29.7;
+			info[3] = "气压：975 百帕<br />最大风速：38 m/s<br />七级风半径：400 km<br />十级凤半径：160 km<br />方向：";	
+			break;	
+		case 10:
+			info[0] = "2012-08-08 12:00";
+			info[1] = 120.5;
+			info[2] = 30;
+			info[3] = "气压：978 百帕<br />最大风速：35 m/s<br />七级风半径：400 km<br />十级凤半径：160 km<br />方向：";	
+			break;	
+		case 11:
+			info[0] = "2012-08-08 14:00";
+			info[1] = 120.3;
+			info[2] = 30.1;
+			info[3] = "气压：980 百帕<br />最大风速：33 m/s<br />七级风半径：400 km<br />十级凤半径：150 km<br />方向：";	
+			break;	
+		case 12:
+			info[0] = "2012-08-08 16:00";
+			info[1] = 120;
+			info[2] = 30.4;
+			info[3] = "气压：982 百帕<br />最大风速：30 m/s<br />七级风半径：350 km<br />十级凤半径：120 km<br />方向：";	
+			break;	
+		case 13:
+			info[0] = "2012-08-08 18:00";
+			info[1] = 119.6;
+			info[2] = 30.5;
+			info[3] = "气压：983 百帕<br />最大风速：28 m/s<br />七级风半径：350 km<br />十级凤半径：100 km<br />方向：";	
+			break;	
+		case 14:
+			info[0] = "2012-08-08 20:00";
+			info[1] = 119.2;
+			info[2] = 30.5;
+			info[3] = "气压：982 百帕<br />最大风速：25 m/s<br />七级风半径：350 km<br />十级凤半径： km<br />方向：";	
+			break;	
+		case 15:
+			info[0] = "2012-08-08 22:00";
+			info[1] = 119;
+			info[2] = 30.6;
+			info[3] = "气压：987 百帕<br />最大风速：23 m/s<br />七级风半径：350 km<br />十级凤半径： km<br />方向：";	
+			break;	
+		case 16:
+			info[0] = "2012-08-09 00:00";
+			info[1] = 118.8;
+			info[2] = 30.6;
+			info[3] = "气压：988 百帕<br />最大风速：23 m/s<br />七级风半径：350 km<br />十级凤半径： km<br />方向：";	
+			break;	
+		case 17:
+			info[0] = "2012-08-09 02:00";
+			info[1] = 118.6;
+			info[2] = 30.6;
+			info[3] = "气压：988 百帕<br />最大风速：23 m/s<br />七级风半径：350 km<br />十级凤半径： km<br />方向：";	
+			break;
+		case 18:
+			info[0] = "2012-08-09 04:00";
+			info[1] = 118.4;
+			info[2] = 30.7;
+			info[3] = "气压：988 百帕<br />最大风速：23 m/s<br />七级风半径：350 km<br />十级凤半径： km<br />方向：";	
+			break;	
+		case 19:
+			info[0] = "2012-08-09 06:00";
+			info[1] = 118.2;
+			info[2] = 30.7;
+			info[3] = "气压：989 百帕<br />最大风速：20 m/s<br />七级风半径： km<br />十级凤半径： km<br />方向：";	
+			break;	
+			
+		case -1:
+			info[0] = "2012-08-07 16:00";
+			info[1] = 123.6;
+			info[2] = 27.8;
+			info[3] = "气压：950 百帕<br />最大风速：45m/s<br />七级风半径： 450km<br />十级凤半径： 200km<br />方向：";
+			break;
+	}
+	return info;
+}
+
+function getInfo(index){
+	//此处替换为数据获取代码，由于是DEMO，我使用了静态数据
+	index = index?index:0;
+	var info = new Array()
+	
+	switch(index){
+	
+		case 0:
+			info[0] = "晓桥";
+			info[1] = "62914200";
+			info[2] =infoWindow2;
+			info[3]= stringxq;
+			info[4] = "xiaoqiao";
+			break;
+		case 1:
+			info[0] = "六合";
+			info[1] = "62914800";
+			info[2] =infoWindow3;
+			info[4] = "liuhe";
+			break;
+		case 2:
+			info[0] = "东山";
+			info[1] = "62702350";
+			info[2] =infoWindow4;
+			info[4] = "dongshan";
+			break;
+		case 3:
+			info[0] = "陈家桥";
+			info[1] = "60406100";
+			info[4] = "chenjiaqiao";
+			info[2] =infoWindow5;
+			break;
+		case 4:
+			info[0] = "高淳";
+			info[1] = "62912800";
+			info[4] = "gaochun";
+			info[2] =infoWindow6;
+			break;
+		case 5:
+			info[0] = "葛塘";
+			info[1] = "62916400";
+			info[4] = "getang";
+			info[2] = infoWindow7;
+			break;
+		case 6:
+			info[0] = "天生桥";
+			info[1] = "62703100";
+			info[4] = "tianshengqiao";
+			info[2] = infoWindow8;
+			break;
+		case 7:
+			info[0] = "茅东闸";
+			info[1] = "63101001";
+			info[4] = "maodongzha";
+			info[2] = infoWindow10;
+			break;
+		case 8:
+			info[0] = "方便";
+			info[1] = "62703300";
+			info[4] = "fangbian";
+			info[2] = infoWindow11;
+			break;
+		case 9:
+			info[0] = "大河桥";
+			info[1] = "62916600";
+			info[4] = "daheqiao";
+			info[2] =infoWindow12;
+			break;
+		case 10:
+			info[0] = "河王坝";
+			info[1] = "62916700";
+			info[4] = "hewangba";
+			info[2] =infoWindow13;
+			break;
+		case 11:
+			info[0] = "老鸦坝";
+			info[1] = "62703070";
+			info[4] = "laoyaba";
+			info[2] =infoWindow15;
+			info[3]=stringlyb;
+			break;
+		case 12:
+			info[0] = "姚家";
+			info[1] = "62703120";
+			info[4] = "yaojia";
+			info[2] =infoWindow16;
+			info[3] =stringyj;
+			break;
+		case 13:
+			info[0] = "中山";
+			info[1] = "62703261";
+			info[4] = "zhongshan";
+			info[2] =infoWindow17;
+			break;
+	}
+	return info;
+}

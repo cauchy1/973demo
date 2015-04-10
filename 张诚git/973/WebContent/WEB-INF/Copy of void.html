@@ -1,0 +1,89 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="VS_VideoTest.aspx.cs" Inherits="VS_VideoTest" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>无标题页</title>
+</head>
+<body onunload="onbeforeunload_handler()">
+    <form id="form1" runat="server">
+    <div>
+        <object classid="clsid:04F60EAE-29E7-4617-A2BC-D0D44CCF8CF8" codebase="VS_Video3.0\VS_Video.ocx"  width="600" height="450" id="axVideo" name="axVideo"> 
+        </object>
+        <br />
+        <input type="button" id="Link" value="连接" onclick="ShowVideo()" style="width:auto; height:auto" />
+        <input type="button" id="DisLink" value="断开" onclick="FreeVideo()" style="width:auto; height:auto" />
+        <br />
+        <input type="button" id="View1" value="视图1" onclick="SetViewNum(1)" style="width:auto;height:auto" />
+        <input type="button" id="View4" value="视图4" onclick="SetViewNum(4)" style="width:auto;height:auto" />
+        <input type="button" id="View8" value="视图8" onclick="SetViewNum(8)" style="width:auto;height:auto" />
+        <input type="button" id="View9" value="视图9" onclick="SetViewNum(9)" style="width:auto;height:auto" />
+        <input type="button" id="View16" value="视图16" onclick="SetViewNum(16)" style="width:auto;height:auto" />
+        <input type="button" id="View25" value="视图25" onclick="SetViewNum(25)" style="width:auto;height:auto" />
+        <br />
+        <label>设备号</label>
+        <input type="text" id="DeviceID" value="8003494" />
+		<br />
+        <label>通道号<Label>
+        <input type="text" id="ChID" value="1" />
+        <br />
+        <input type="button" id="StartVideo" value="播放" onclick="StartPlay()" style="width:auto; height:auto" />
+        <input type="button" id="Snap" value="抓图" onclick="SnapShot()" style="width:auto; height:auto" />
+        <input type="button" id="StopVideo" value="停止" onclick="StopPlay()" style="width:auto; height:auto" />
+        <br />
+    </div>
+    </form>
+</body>
+</html>
+
+<script language="javascript" type="text/javascript">
+function ShowVideo()
+{
+    document.getElementById("axVideo").IsReadConfigFiles=false;
+    document.getElementById("axVideo").GroupID="administrators";
+    document.getElementById("axVideo").LoginUser="admin";
+    document.getElementById("axVideo").LoginPasswd="1234";
+    document.getElementById("axVideo").ServerIP="218.94.18.3";
+    document.getElementById("axVideo").ServerPort=9900;
+    document.getElementById("axVideo").SaveFilePath="C:\\VS_Video\\";
+    document.getElementById("axVideo").Init();
+    document.getElementById("axVideo").SetVideoWndNum(4);
+}
+
+function FreeVideo()
+{
+	document.getElementById("axVideo").Final();
+}
+
+function SetViewNum(iNum)
+{
+    document.getElementById("axVideo").SetVideoWndNum(iNum);
+}
+
+function StartPlay()
+{
+    var iDevId=parseInt(document.getElementById("DeviceID").value);
+    var iChId=parseInt(document.getElementById("ChID").value);
+	document.getElementById("axVideo").StartPlay(iDevId,iChId);
+}
+
+function SnapShot()
+{
+    var iDevId=parseInt(document.getElementById("DeviceID").value);
+    var iChId=parseInt(document.getElementById("ChID").value); 
+	document.getElementById("axVideo").SnapShot(iDevId,iChId);
+}
+
+function StopPlay()
+{
+    var iDevId=parseInt(document.getElementById("DeviceID").value);
+    var iChId=parseInt(document.getElementById("ChID").value);
+	document.getElementById("axVideo").StopPlay(iDevId,iChId);
+}
+
+function onbeforeunload_handler()
+{
+    document.getElementById("axVideo").Final();
+}
+</script>

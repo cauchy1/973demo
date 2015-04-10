@@ -1,0 +1,123 @@
+
+function timepast()//todo
+{
+	var my_baidumap=this;
+	if(minute>=31&&minute<72)
+	{
+		//alert(minute);			
+		document.getElementById("datenow").innerHTML=getNowtime(minute);
+		for(var i=0;i<14;i++)
+		{
+			var info1 = my_baidumap.getInfo(i);
+			var info2 = my_baidumap.getSW(info1[4],minute);
+			var info22 = my_baidumap.getSW(info1[4],minute-1)-info2;
+			var info3 = my_baidumap.getYL(info1[4],minute);
+			var info33 = my_baidumap.getYL(info1[4],minute-1)-info3;
+			var jingjieyuliang=100;
+			var jingjieshuiwei;
+			if(info1[5])
+			jingjieshuiwei=info1[5];
+			else jingjieshuiwei=9999;
+
+			if(info2!=0&&info22>0)
+			{
+				document.getElementById((info1[1]+"sw")).innerHTML=info2+"<img src="+'"'+"http://vip.tu265.com/s-29257-5191e38327fef.PNG"+'"'+">";
+			}
+			else if(info2!=0&&info22<0)
+			{				
+				document.getElementById((info1[1]+"sw")).innerHTML=info2+"<img src="+'"'+"http://vip.tu265.com/s-29257-5191e380d6b97.PNG"+'"'+">";
+			}
+			else if(info2!=0)
+			{
+						document.getElementById((info1[1]+"sw")).innerHTML=info2;
+
+			}			
+			if(info3!=0&&info33>0)
+			{
+				document.getElementById((info1[1]+"yl")).innerHTML=info3+"<img src="+'"'+"http://vip.tu265.com/s-29257-5191e38327fef.PNG"+'"'+">";
+			}
+			else if(info3!=0&&info33<0)
+			{				
+				document.getElementById((info1[1]+"yl")).innerHTML=info3+"<img src="+'"'+"http://vip.tu265.com/s-29257-5191e380d6b97.PNG"+'"'+">";
+			}
+			else if(info3!=0)
+			{
+						document.getElementById((info1[1]+"yl")).innerHTML=info3;
+
+			}
+			if(info2!=0&&info3!=0)
+			{
+				if(!info1[3])
+				info1[2].setContent("<h2>"+info1[0]+"</h2> <table width=&quot240&quot border=&quot1&quot><tr><td> 水位</td><td>"+info2+"m</td></tr><tr><td> 雨量</td><td>"+info3+"</td></tr></table>");
+				else 
+						info1[2].setContent("<h2>"+info1[0]+"</h2> <table width=&quot240&quot border=&quot1&quot><tr><td> 水位</td><td>"+info2+"m</td></tr><tr><td> 雨量</td><td>"+info3+"</td></tr></table>"+info1[3]);
+				info1[2].redraw();
+			}
+				document.getElementById(info1[1]+"yl").className="changecolor"+6;
+			if(info3>100)
+				document.getElementById(info1[1]+"yl").className="changecolor"+0;
+				document.getElementById(info1[1]+"sw").className="changecolor"+6;
+			if(info2>jingjieshuiwei)
+				document.getElementById(info1[1]+"sw").className="changecolor"+0;
+			
+		}
+		minute++;
+		if(minute == 70)
+		{		
+			time = 17;
+			flag = 1;
+			miniute=0;
+		}
+	}
+	else{
+		if (time<20)
+		{
+			polygon.hide();
+			var info=my_baidumap.getTyphoo(time);
+			document.getElementById("datenow").innerHTML=info[0];
+			var point = new BMap.Point(info[1],info[2]);
+			if(time<11||time>17)
+			{
+				my_baidumap.map.panTo(point);
+				my_baidumap.drawsector(time);
+			}
+			my_baidumap.insertMarker(point,0,info[0],info[3]);
+	
+			check_city(time);
+			if(time<9)
+			time=time+0.5;
+			else time=time+1;
+			if(time==20)
+			{
+				time=0;
+			}
+		
+		}
+		if(time>=10&&time<=17)
+		{
+			document.getElementById("nj").className="changecolor"+0;
+			if(flag == 0&&time==11){
+				minute =31;
+			}
+		}
+	
+		if(time==10)
+		{	
+			var point = new BMap.Point(118.757364,32.104793);
+			circle = new BMap.Circle(point,130000);
+			circle.setFillOpacity(0.3);
+			my_baidumap.map.addOverlay(circle);
+			circle.show();
+		}
+		if(time==11)
+		{
+		var point = new BMap.Point(118.857364,31.904793);
+		my_baidumap.map.centerAndZoom(point, 10); 
+			polygon.hide();
+		}
+		if(time==19)
+		{
+			circle.hide();
+		}
+	}
+}
